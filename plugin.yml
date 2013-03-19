@@ -1,0 +1,5 @@
+name: ChatChanger
+main: net.invisioncraft.chatchanger.ChatChanger
+version: 1.0a
+depend: [TownyChat]
+description: Automatically changes TownyChat channels when changing worlds.
