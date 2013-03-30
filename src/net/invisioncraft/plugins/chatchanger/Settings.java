@@ -19,11 +19,11 @@ package net.invisioncraft.plugins.chatchanger;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
-public class Config {
+public class Settings {
     public ChatChanger plugin;
     public FileConfiguration config;
 
-    public Config(ChatChanger plugin) {
+    public Settings(ChatChanger plugin) {
         this.plugin = plugin;
         config = plugin.getConfig();
 

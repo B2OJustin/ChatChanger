@@ -19,6 +19,7 @@ package net.invisioncraft.plugins.chatchanger.listeners;
 
 import com.palmergames.bukkit.TownyChat.Chat;
 import net.invisioncraft.plugins.chatchanger.ChatChanger;
+import net.invisioncraft.plugins.chatchanger.Settings;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -27,16 +28,18 @@ import org.bukkit.event.player.PlayerChangedWorldEvent;
 public class PlayerChangedWorldListener implements Listener {
     public Chat townyChat;
     public ChatChanger plugin;
+    public Settings settings;
 
     public PlayerChangedWorldListener(ChatChanger plugin) {
         this.plugin = plugin;
+        settings = plugin.getSettings();
         townyChat = (Chat) plugin.getServer().getPluginManager().getPlugin("TownyChat");
     }
 
-    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerChangedWorld(PlayerChangedWorldEvent event) {
         String playerName = event.getPlayer().getName();
-        String channelName = plugin.config.getChannel(event.getPlayer().getWorld().getName());
+        String channelName = settings.getChannel(event.getPlayer().getWorld().getName());
         townyChat.getChannelsHandler().getChannel(channelName).join(playerName);
     }
 }

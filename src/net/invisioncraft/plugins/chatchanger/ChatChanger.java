@@ -23,12 +23,12 @@ import java.util.logging.Level;
 
 public final class ChatChanger extends JavaPlugin {
     public static ChatChanger plugin;
-    public Config config;
+    public Settings settings;
 
     @Override
     public void onEnable() {
         ChatChanger.plugin = this;
-        config = new Config(this);
+        settings = new Settings(this);
         if(getServer().getPluginManager().getPlugin("TownyChat") == null) {
             getLogger().log(Level.WARNING, "TownyChat not found, disabling plugin.");
             this.getServer().getPluginManager().disablePlugin(this);
@@ -40,7 +40,10 @@ public final class ChatChanger extends JavaPlugin {
 
     @Override
     public void onDisable() {
+    }
 
+    public Settings getSettings() {
+        return settings;
     }
 
     public static ChatChanger getPlugin() {
